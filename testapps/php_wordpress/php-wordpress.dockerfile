@@ -1,7 +1,8 @@
 FROM  wordpress:beta-php8.1-apache
 
 # COPY config.m4 /pinpoint-c-agent/config.m4 
-# COPY src/PHP /pinpoint-c-agent/src/PHP
+# COPY pinpoint_php.cpp /pinpoint-c-agent/pinpoint_php.cpp 
+# COPY php_pinpoint_php.h /pinpoint-c-agent/php_pinpoint_php.h
 # COPY common /pinpoint-c-agent/common
 # COPY testapps/php_wordpress/pinpoint_php.ini /pinpoint-c-agent/pinpoint_php.ini
 
@@ -11,7 +12,7 @@ FROM  wordpress:beta-php8.1-apache
 # COPY install_pinpoint_php.sh /tmp/
 # RUN sh /tmp/install_pinpoint_php.sh
 
-RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/download/v0.6.3/install_pinpoint_php.sh | sh
+RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/download/install_pinpoint_php.sh | sh
 
 COPY testapps/php_wordpress/wp-config.php /usr/src/wordpress/wp-config.php
 #  install composer

@@ -1,3 +1,9 @@
+## What's collector-agent
+
+A bridger to pinpoint-collector. 
+
+![collector-agent](../images/pinpoint_v0.5.x.png)
+
 ## Install Collector Agent
 `Collector-Agent` formats the span from PHP/Python/C/CPP-Agent and send to `Pinpoint-Collector`.
 
@@ -27,14 +33,14 @@
 ### 2. Use docker images
 
 ```sh
-docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:0.5.0
+docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.4
 ```
 ### 3. K8s side car
 
 server.yaml sample
 
 ``` yml
-- image: ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:0.5.0
+- image: ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.4
         name: collector-agent
         args: ["-RecvBufSize=1048576"]
         securityContext:

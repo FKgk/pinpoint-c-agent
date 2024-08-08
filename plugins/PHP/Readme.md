@@ -1,3 +1,5 @@
+> end of maintain : goto https://github.com/pinpoint-apm/pinpoint-php-aop?tab=readme-ov-file#write-your-own-plugins
+
 # welcome to use pinpoint-php
 ## How to write your own plugins 
 

@@ -1,3 +1,5 @@
+＞　End of maintain: goto [DOC/collector-agent](../DOC/collector-agent/readme.md)
+
 ## Install Collector-Agent
 `Collector-Agent`, who formats the span from PHP/Python/C/CPP-Agent and send to `Pinpoint-Collector`, is an agent written by [golang](https://golang.google.cn/).Please install golang before the following steps.[Install GO](https://golang.google.cn/doc/install)
 
