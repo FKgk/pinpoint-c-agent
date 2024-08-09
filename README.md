@@ -28,7 +28,7 @@ Our advantage:
 2. Auto-injection, that means less aggression against your code.
     - python: leverage [PEP 318 Decorator](https://peps.python.org/pep-0318/) 
     - php: leverage `CG(*_table)` in php kernel and AST parser([nikic/PHP-Parser](https://github.com/nikic/PHP-Parser))
-3. Cross-platform: windows/*nux/macOS. It helps address the problems even when you developing.
+3. Cross-platform: windows/*nux/macOS. It helps address the problems even when you are developing.
 
 ## Python Agent
 
