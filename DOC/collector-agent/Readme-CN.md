@@ -1,13 +1,15 @@
-## What's collector-agent
+[English](Readme.md) | [中文](Readme-CN.md) | [한국어](Readme-KR.md)
 
-A bridger to pinpoint-collector. 
+## Collector-agent 作用
+
+pinpoint-collector的桥接模块
 
 ![collector-agent](/images/pinpoint_v0.5.x.png)
 
-## Collector Agent Guide
-`Collector-Agent` formats the span from PHP/Python/C/CPP-Agent and send to `Pinpoint-Collector`.
+## Collector Agent 介绍
+`Collector-Agent` 格式从PHP/Python/C/CPP-Agent 发送过来的Span，并转发到`Pinpoint-Collector`。
 
-- Add environment variables:
+- 配置环境变量:
     ```
     export PP_COLLECTOR_AGENT_SPAN_IP=dev-pinpoint
     export PP_COLLECTOR_AGENT_SPAN_PORT=9993
@@ -26,21 +28,21 @@ A bridger to pinpoint-collector.
     4. `PP_Log_Level`: Set the log level.
     5. `PP_ADDRESS`: Set the address of `collector-agent`, then `PHP/Python-Agent` will connect collector-agent through this address.
 
-### 1. Download from github.release
+### 1. 从github release 页面下载二进制程序
 
   https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest
 
-### 2. Use docker images
+### 2. 直接使用docker image
 
-> Release page:  https://github.com/pinpoint-apm/pinpoint-c-agent/pkgs/container/pinpoint-c-agent%2Fcollector-agent
+> 发布页面:  https://github.com/pinpoint-apm/pinpoint-c-agent/pkgs/container/pinpoint-c-agent%2Fcollector-agent
 
-#### Example:
+#### 例子:
 
 ```sh
 docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:latest
 ```
 
-### 3. K8s side car
+### 3. K8S 中以sidecar 模式运行
 
 server.yaml sample
 
@@ -71,10 +73,10 @@ server.yaml sample
             value: "true"
 ```
 
-### 4. Compiling from source [require `go.1.18`]
+### 4. 手动编译 [require `go.1.18`]
 
-- Install: `GOBIN=/usr/local/bin/ go install github.com/pinpoint-apm/pinpoint-c-agent/collector-agent@dev`
+- 执行: `GOBIN=/usr/local/bin/ go install github.com/pinpoint-apm/pinpoint-c-agent/collector-agent@dev`
   - ❗❗❗Note: collector-agent: located into `/usr/local/bin/`
-  
+
 `./collector-agent`
    

@@ -8,7 +8,9 @@
  [![Total Downloads](https://img.shields.io/packagist/dt/pinpoint-apm/pinpoint-php-aop.svg?style=flat-square)](https://packagist.org/packages/pinpoint-apm/pinpoint-php-aop)\
 `pinpointpy:` ![PyPI - License](https://img.shields.io/pypi/l/pinpointpy)
  [![pypi](https://badge.fury.io/py/pinpointpy.svg)](https://pypi.org/project/pinpointpy/)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/pinpointpy)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pinpointpy)\
+`github-assert`: ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/pinpoint-apm/pinpoint-c-agent/total)
+
 
 
 **Visit [our official website](http://pinpoint-apm.github.io/pinpoint/) for more information and [the Latest updates on Pinpoint](https://pinpoint-apm.github.io/pinpoint/news.html)**  
