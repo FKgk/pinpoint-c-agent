@@ -15,7 +15,7 @@ gcc|gcc 4.7+
 cmake| 3.0+
 *inux| 
 pinpoint| 2.0+(GRPC)
-collector-agent| [installed ?](../collector-agent/readme.md)
+collector-agent| [installed ?](../collector-agent/Readme.md)
 
 ### 安装步骤
 

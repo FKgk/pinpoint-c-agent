@@ -14,7 +14,7 @@
 | *inux/windows/macOs |                                             | windows is released                 |
 | pinpoint            | `2.0+`                                      |
 | composer            |                                             | class can be automatic pinpoint-cut |
-| collector-agent     | [installed ?](../collector-agent/readme.md) |
+| collector-agent     | [installed ?](../collector-agent/Readme.md) |
 
 ### Installation
 
