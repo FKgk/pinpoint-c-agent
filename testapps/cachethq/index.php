@@ -23,7 +23,7 @@
 
 require __DIR__ . '/../bootstrap/autoload.php';
 
-class CachethqRequestPlugin extends Pinpoint\Plugins\DefaultRequestPlugin
+class CachethqRequestPlugin extends Pinpoint\Plugins\LaravelPerRequest
 {
     public function __construct()
     {
@@ -32,11 +32,6 @@ class CachethqRequestPlugin extends Pinpoint\Plugins\DefaultRequestPlugin
         if (!in_array($_SERVER['REQUEST_URI'], $blackUri)) {
             parent::__construct();
         }
-    }
-
-    public function __destruct()
-    {
-        // do nothing
     }
 }
 define('APPLICATION_NAME', 'cd.dev.test.php'); // your application name
