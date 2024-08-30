@@ -13,3 +13,4 @@ mysqlclient==2.2.0
 grpcio
 grpc-interceptor==0.15.4
 psycopg2
+pinpointPy
