@@ -1,0 +1,19 @@
+FROM php:8.0.30-cli
+
+
+RUN apt update && apt-get install -y \
+    libzip-dev \
+    zip \
+    git \
+    && docker-php-ext-install zip pdo pdo_mysql
+
+RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/download/install_pinpoint_php.sh | sh
+
+COPY testapps/laravel/example-app /app
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN cd /app && composer update && composer require -w pinpoint-apm/pinpoint-php-aop:v4.x-dev
+WORKDIR /app
+EXPOSE 8000
+CMD [ "php" ,"artisan", "serve","--host=0.0.0.0"]

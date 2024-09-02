@@ -346,43 +346,43 @@ services:
         limits:
           cpus: "0.5"
           memory: 50M
-  
+
   php-wordpress:
     build:
       dockerfile: testapps/php_wordpress/php-wordpress.dockerfile
       context: ../
     ports:
-      - "8080:80"     
+      - "8080:80"
     cap_add:
-      - SYS_PTRACE 
+      - SYS_PTRACE
     depends_on:
       dev-mysql:
-        condition: service_healthy 
+        condition: service_healthy
       dev-collector:
-        condition: service_started        
+        condition: service_started
     healthcheck:
       test: curl -f http://localhost:80
       interval: 5s
-      timeout: 1s 
+      timeout: 1s
 
   phpmyadmin:
     build:
       dockerfile: testapps/php_phpmyadmin/phpmyadmin.dockerfile
       context: ../
     environment:
-      - PMA_ARBITRARY=1   
+      - PMA_ARBITRARY=1
       - PMA_HOST=dev-mysql
       - PMA_USER=root
       - PMA_PASSWORD=password
     ports:
-      - "8081:80"     
+      - "8081:80"
     cap_add:
-      - SYS_PTRACE 
+      - SYS_PTRACE
     depends_on:
       dev-mysql:
-        condition: service_healthy 
+        condition: service_healthy
       dev-collector:
-        condition: service_started 
+        condition: service_started
     deploy:
       resources:
         limits:
@@ -390,32 +390,32 @@ services:
     healthcheck:
       test: curl -f http://localhost:80
       interval: 5s
-      timeout: 1s          
+      timeout: 1s
 
   cg_phpmyadmin:
     image: phpmyadmin:apache
     environment:
-      - PMA_ARBITRARY=1   
+      - PMA_ARBITRARY=1
       - PMA_HOST=dev-mysql
       - PMA_USER=root
       - PMA_PASSWORD=password
     ports:
-      - "8082:80"     
+      - "8082:80"
     cap_add:
-      - SYS_PTRACE 
+      - SYS_PTRACE
     depends_on:
       dev-mysql:
-        condition: service_healthy 
+        condition: service_healthy
     deploy:
       resources:
         limits:
-          cpus: "2"       
+          cpus: "2"
 
   flarum:
     # image: 
     build:
       dockerfile: testapps/flarum/flarum.dockerfile
-      context: ../      
+      context: ../
     container_name: flarum
     env_file:
       - ./flarum/flarum.env
@@ -423,14 +423,14 @@ services:
       - 8888:8888
     depends_on:
       dev-mysql:
-        condition: service_healthy 
+        condition: service_healthy
       dev-collector:
-        condition: service_started    
+        condition: service_started
 
   cachet:
     build:
       dockerfile: testapps/cachethq/cachethq.dockerfile
-      context: ../    
+      context: ../
     ports:
       - 8000:8000
     environment:
@@ -457,12 +457,12 @@ services:
       redis:
         condition: service_healthy
       dev-collector:
-        condition: service_started           
-    restart: on-failure        
+        condition: service_started
+    restart: on-failure
   shopware-php:
     build:
       dockerfile: testapps/shopware/shopware.dockerfile
-      context: ../  
+      context: ../
     environment:
       APP_SECRET: 440dec3766de53010c5ccf6231c182acfc90bd25cff82e771245f736fd276518
       INSTANCE_ID: 10612e3916e153dd3447850e944a03fabe89440970295447a30a75b151bd844e
@@ -479,12 +479,12 @@ services:
       REDIS_SESSION_DATABASE: 3
       APP_ENV: dev
     ports:
-      - 8200:80    
+      - 8200:80
     depends_on:
       redis:
         condition: service_healthy
       dev-collector:
-        condition: service_started       
+        condition: service_started
       dev-mysql-setup:
         condition: service_completed_successfully
 
@@ -492,17 +492,35 @@ services:
   thinkphp8:
     build:
       dockerfile: testapps/thinkphp-php/thinkphp.dockerfile
-      context: ../  
+      context: ../
     ports:
-      - 8201:8000    
+      - 8201:8000
     depends_on:
       redis:
         condition: service_healthy
       dev-collector:
-        condition: service_started       
+        condition: service_started
       dev-mysql-setup:
         condition: service_completed_successfully
     healthcheck:
       test: curl -f http://thinkphp8:8000/test_db
       interval: 5s
-      timeout: 1s        
+      timeout: 1s
+
+  laravel:
+    build:
+      dockerfile: testapps/laravel/dockerfile
+      context: ../
+    ports:
+      - 8202:8000
+    depends_on:
+      # redis:
+      # condition: service_healthy
+      dev-collector:
+        condition: service_started
+        # dev-mysql-setup:
+        # condition: service_completed_successfully
+    healthcheck:
+      test: curl -f http://localhost:8000/
+      interval: 5s
+      timeout: 1s
