@@ -8,5 +8,5 @@ RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/do
 RUN composer self-update 2.4.4
 USER  www-data 
 COPY testapps/shopware/index.php /var/www/html/public/index.php
-RUN cd /var/www/html/ &&  composer require -w pinpoint-apm/pinpoint-php-aop
+RUN cd /var/www/html/ &&  composer require pinpoint-apm/pinpoint-php-aop:^3.0.2
 USER root

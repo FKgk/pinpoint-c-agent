@@ -21,6 +21,6 @@ COPY tests /pinpoint-c-agent/tests
 
 RUN cd /pinpoint-c-agent/ && phpize && ./configure && make && make install
 
-RUN COMPOSER_ALLOW_SUPERUSER=1 composer require pinpoint-apm/pinpoint-php-aop
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer require pinpoint-apm/pinpoint-php-aop:^3.0.2
 
 CMD [ "php" ,"/workspace/run.php" ]
