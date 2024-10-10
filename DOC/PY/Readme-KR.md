@@ -6,23 +6,17 @@
 
 ### 요구
 
-디펜던시 | 버전
----|----
-python |python 3.5+
-python async|python 3.7.1+
-GO | | 
-gcc|gcc 4.7+
-cmake| 3.0+
-*inux| 
-pinpoint| 2.0+(GRPC)
-collector-agent| [installed ?](../collector-agent/Readme.md)
+| 디펜던시        | 버전                                        |                     |
+| --------------- | ------------------------------------------- |
+| python          | 3+                                          | (async must 3.7.1+) |
+| collector-agent | [installed ?](../collector-agent/Readme.md) |
 
 ### 설치 스텝 
 
 #### pinpointPy 모듈 구성 
 
 ```shell
-$ pip install pinpointPy
+$ pip install pinpointPy==1.3.1
 ```
 
 ### 프레임워크 인티그레이션 
@@ -33,6 +27,11 @@ $ pip install pinpointPy
 > include middleware
 
 ```
+from pinpointPy import set_agent, monkey_patch_for_pinpoint, use_thread_local_context
+use_thread_local_context()
+monkey_patch_for_pinpoint()
+set_agent("cd.dev.test.py", "cd.dev.test.py",
+          'tcp:dev-collector:10000', -1)
 app = Flask(__name__)
 app.wsgi_app = PinPointMiddleWare(app,app.wsgi_app)
 ```
@@ -45,6 +44,11 @@ app.wsgi_app = PinPointMiddleWare(app,app.wsgi_app)
 settings.py
 
 ```python
+from pinpointPy import set_agent, monkey_patch_for_pinpoint, use_thread_local_context
+use_thread_local_context()
+monkey_patch_for_pinpoint()
+set_agent("cd.dev.test.py", "cd.dev.test.py",
+          'tcp:dev-collector:10000', -1)
 
 MIDDLEWARE = [
     'pinpointPy.Django.DjangoMiddleWare',
@@ -53,9 +57,28 @@ MIDDLEWARE = [
 
 ```
 
-#### 1.3 Tornado
+#### 1.3 Fastapi
+Settings in app/main.py:
+```
+from starlette_context.middleware import ContextMiddleware
+from starlette_context import context, plugins
 
-Todo....
+from pinpointPy import set_agent
+from pinpointPy.Fastapi import asyn_monkey_patch_for_pinpoint
+from starlette.middleware import Middleware
+from pinpointPy.Fastapi import PinPointMiddleWare
+
+middleware = [
+    Middleware(ContextMiddleware),
+    Middleware(PinPointMiddleWare)
+]
+set_agent("cd.dev.test.py", "cd.dev.test.py",0, 'tcp:dev-collector:10000')
+use_starlette_context()
+## patch for synchronous libraries, such as requests,myql-connector-python ...
+# support lists https://github.com/pinpoint-apm/pinpoint-c-agent/tree/dev/plugins/PY/pinpointPy/libs
+monkey_patch_for_pinpoint()
+async_monkey_patch_for_pinpoint()
+```
 
 #### 1.4 pyramid
 
@@ -108,15 +131,15 @@ set_agent("flask-agent","FLASK-AGENT",'tcp:dev-collector:9999',-1)
 
 ### Case: flask/test_mysql
 
--|TPR(ms)|RPS(#/sec)
-----|-----|----
-pinpoint-py|4.487|445.73|
--|4.498 |444.69
--|4.526 |441.88
-pure|4.440|450.44
--|4.479|446.51
--|4.425|451.96
-Result|+0.05ms|-1%
+| -           | TPR(ms) | RPS(#/sec) |
+| ----------- | ------- | ---------- |
+| pinpoint-py | 4.487   | 445.73     |
+| -           | 4.498   | 444.69     |
+| -           | 4.526   | 441.88     |
+| pure        | 4.440   | 450.44     |
+| -           | 4.479   | 446.51     |
+| -           | 4.425   | 451.96     |
+| Result      | +0.05ms | -1%        |
 
 > TPR: time per request         
 > RPS: requests per second

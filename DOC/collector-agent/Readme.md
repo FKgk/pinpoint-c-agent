@@ -20,7 +20,7 @@ A bridger to pinpoint-collector.
     export PP_COLLECTOR_AGENT_ISDOCKER=false
     export PP_LOG_DIR=/tmp/
     export PP_Log_Level=INFO
-    export PP_ADDRESS=0.0.0.0@9999
+    export PP_ADDRESS=0.0.0.0@10000
     ```
     1. `PP_COLLECTOR_AGENT_SPAN_IP`, `PP_COLLECTOR_AGENT_AGENT_IP`, `PP_COLLECTOR_AGENT_STAT_IP`: Set the IP of pinpoint-collector.
     2. `PP_COLLECTOR_AGENT_SPAN_PORT`, `PP_COLLECTOR_AGENT_AGENT_PORT`, `PP_COLLECTOR_AGENT_STAT_PORT`: Set the port of pinpoint-collector(grpc).
@@ -28,9 +28,9 @@ A bridger to pinpoint-collector.
     4. `PP_Log_Level`: Set the log level.
     5. `PP_ADDRESS`: Set the address of `collector-agent`, then `PHP/Python-Agent` will connect collector-agent through this address.
 
-### 1. Download from github.release
+### 1. Download binary from github.release
 
-  https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest
+  https://github.com/pinpoint-apm/pinpoint-c-agent/releases/tag/v0.6.6
 
 ### 2. Use docker images
 
@@ -39,7 +39,7 @@ A bridger to pinpoint-collector.
 #### Example:
 
 ```sh
-docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:latest
+docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.6
 ```
 
 ### 3. K8s side car
@@ -47,7 +47,7 @@ docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoin
 server.yaml sample
 
 ``` yml
-- image: ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.4
+- image: ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.6
         name: collector-agent
         args: ["-RecvBufSize=1048576"]
         securityContext:
@@ -68,7 +68,7 @@ server.yaml sample
           - name: "PP_Log_Level"
             value: "INFO"
           - name: "PP_ADDRESS"
-            value: "localhost@9999"
+            value: "localhost@10000"
           - name: "PP_COLLECTOR_AGENT_ISDOCKER"
             value: "true"
 ```

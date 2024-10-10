@@ -6,23 +6,17 @@
 
 ### 要求
 
-依赖| 版本
----|----
-python |python 3.5+
-python async|python 3.7.1+
-GO | | 
-gcc|gcc 4.7+
-cmake| 3.0+
-*inux| 
-pinpoint| 2.0+(GRPC)
-collector-agent| [installed ?](../collector-agent/Readme.md)
+| 依赖            | 版本                                        | 杂项                |
+| --------------- | ------------------------------------------- |
+| python          | 3+                                          | (async must 3.7.1+) |
+| collector-agent | [installed ?](../collector-agent/Readme.md) |
 
 ### 安装步骤
 
 #### 搭建 pinpointPy 模块
 
 ```shell
-$ pip install pinpointPy
+$ pip install pinpointPy==1.3.1
 ```
 
 ### 框架集成
@@ -76,9 +70,6 @@ set_agent("fastapi-redis", "fastapi-redis", 'tcp:10.34.130.152:9999', -1, True)
 ```
 例子: [fastapi-redis-pinpoint](https://github.com/EyelynSu/fastapi-redis-pinpoint)
 
-#### 1.3 Tornado
-
-Todo....
 
 #### 1.4 pyramid
 
@@ -131,15 +122,15 @@ set_agent("flask-agent","FLASK-AGENT",'tcp:dev-collector:9999',-1)
 
 ### Case: flask/test_mysql
 
--|TPR(ms)|RPS(#/sec)
-----|-----|----
-pinpoint-py|4.487|445.73|
--|4.498 |444.69
--|4.526 |441.88
-pure|4.440|450.44
--|4.479|446.51
--|4.425|451.96
-Result|+0.05ms|-1%
+| -           | TPR(ms) | RPS(#/sec) |
+| ----------- | ------- | ---------- |
+| pinpoint-py | 4.487   | 445.73     |
+| -           | 4.498   | 444.69     |
+| -           | 4.526   | 441.88     |
+| pure        | 4.440   | 450.44     |
+| -           | 4.479   | 446.51     |
+| -           | 4.425   | 451.96     |
+| Result      | +0.05ms | -1%        |
 
 > TPR: time per request         
 > RPS: requests per second

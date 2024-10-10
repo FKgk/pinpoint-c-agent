@@ -20,7 +20,7 @@ pinpoint-collector的桥接模块
     export PP_COLLECTOR_AGENT_ISDOCKER=false
     export PP_LOG_DIR=/tmp/
     export PP_Log_Level=INFO
-    export PP_ADDRESS=0.0.0.0@9999
+    export PP_ADDRESS=0.0.0.0@10000
     ```
     1. `PP_COLLECTOR_AGENT_SPAN_IP`, `PP_COLLECTOR_AGENT_AGENT_IP`, `PP_COLLECTOR_AGENT_STAT_IP`: Set the IP of pinpoint-collector.
     2. `PP_COLLECTOR_AGENT_SPAN_PORT`, `PP_COLLECTOR_AGENT_AGENT_PORT`, `PP_COLLECTOR_AGENT_STAT_PORT`: Set the port of pinpoint-collector(grpc).
@@ -30,7 +30,7 @@ pinpoint-collector的桥接模块
 
 ### 1. 从github release 页面下载二进制程序
 
-  https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest
+  https://github.com/pinpoint-apm/pinpoint-c-agent/releases/tag/v0.6.6
 
 ### 2. 直接使用docker image
 
@@ -39,7 +39,7 @@ pinpoint-collector的桥接模块
 #### 例子:
 
 ```sh
-docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:latest
+docker run -itd -p 9999:9999  --env-file ./env.list ghcr.io/pinpoint-apm/pinpoint-c-agent/collector-agent:v0.6.6
 ```
 
 ### 3. K8S 中以sidecar 模式运行

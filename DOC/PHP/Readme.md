@@ -23,9 +23,9 @@
 
      `pecl install pinpoint_php`
      or 
-     `curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/download/install_pinpoint_php.sh | sh`
+     `curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/tag/download/v0.6.6/install_pinpoint_php.sh | sh`
 
-     > On windows: download .dll from  https://pecl.php.net/package/pinpoint_php  or https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest
+     > On windows: download .dll from  https://pecl.php.net/package/pinpoint_php  or https://github.com/pinpoint-apm/pinpoint-c-agent/releases/tag/v0.6.6/download/
 
 2. Check your pinpoint_php.ini is right
          

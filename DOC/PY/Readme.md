@@ -13,11 +13,10 @@
 ### Installation
 
 ```shell
-$ pip install pinpointPy
+$ pip install pinpointPy==1.3.1
 ```
 
 ### Choose your framework
-
 
 #### 1.1 Flask
 
