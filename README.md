@@ -17,7 +17,7 @@
 
 |Version | Status |
 |---|---- |
-| [ 0.7 ](https://github.com/pinpoint-apm/pinpoint-c-agent/tree/0.7)  | Active Support  WIP |
+| [ 0.7 ](https://github.com/pinpoint-apm/pinpoint-c-agent/tree/0.7)  | Active Support  (released) |
 | [ 0.6 ](https://github.com/pinpoint-apm/pinpoint-c-agent/tree/dev)  | Active Support  🔥 |
  | 0.5 | End of support ❌ |
  
