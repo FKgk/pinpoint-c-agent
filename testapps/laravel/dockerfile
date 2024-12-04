@@ -7,7 +7,7 @@ RUN apt update && apt-get install -y \
     git \
     && docker-php-ext-install zip pdo pdo_mysql
 
-RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/download/install_pinpoint_php.sh | sh
+RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/download/v0.6.7/install_pinpoint_php.sh | sh
 
 COPY testapps/laravel/example-app /app
 

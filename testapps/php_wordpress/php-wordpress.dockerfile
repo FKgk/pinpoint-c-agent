@@ -12,7 +12,7 @@ FROM  wordpress:beta-php8.1-apache
 # COPY install_pinpoint_php.sh /tmp/
 # RUN sh /tmp/install_pinpoint_php.sh
 
-RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/latest/download/install_pinpoint_php.sh | sh
+RUN curl -sL https://github.com/pinpoint-apm/pinpoint-c-agent/releases/download/v0.6.7/install_pinpoint_php.sh | sh
 
 COPY testapps/php_wordpress/wp-config.php /usr/src/wordpress/wp-config.php
 #  install composer
