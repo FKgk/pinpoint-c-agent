@@ -34,7 +34,7 @@ class NextSpanPlugin(Common.PinTrace):
             return False, parentId, args, kwargs
         # pull out headers
         if sampled:
-            url = args[1]
+            url = kwargs.get('url') or args[1]
             target = urlparse(url).netloc
             if pinpoint.get_context(Defines.PP_HEADER_PINPOINT_SAMPLED, parentId) == "s1":
                 Helper.generatePinpointHeader(
